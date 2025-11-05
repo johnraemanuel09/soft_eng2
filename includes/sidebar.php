@@ -280,14 +280,16 @@
           </a>
           <div class="collapse " id="applicationsExamples">
             <ul class="nav ">
-               <li class="nav-item ">
+
+
+               <!-- <li class="nav-item ">
                 <a class="nav-link text-white " href="../../pages/president/add_president.php">
                   <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="material-icons opacity-10">person_add</i>
                   </div>
                   <span class="nav-link-text ms-1">Add President</span>
                 </a>
-              </li> 
+              </li>  -->
               
               <li class="nav-item ">
                 <a class="nav-link text-white " href="../../pages/registrar/add-registrar.php">
@@ -297,22 +299,22 @@
                   <span class="nav-link-text ms-1">Add Registrar</span>
                 </a>
               </li>
-              <li class="nav-item ">
+              <!-- <li class="nav-item ">
                 <a class="nav-link text-white " href="../../pages/principal/add-principal.php">
                   <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="material-icons opacity-10">person_add</i>
                   </div>
                   <span class="nav-link-text ms-1">Add Principal</span>
                 </a>
-              </li>
-              <li class="nav-item ">
+              </li> -->
+              <!-- <li class="nav-item ">
                 <a class="nav-link text-white " href="../../pages/alumni/add_alumni.php">
                   <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="material-icons opacity-10">person_add</i>
                   </div>
                   <span class="nav-link-text ms-1">Add Alumni</span>
                 </a>
-              </li>
+              </li> -->
 
               <li class="nav-item ">
                 <a class="nav-link text-white " href="../../pages/custodian/add.custodian.php">
@@ -341,7 +343,7 @@
                 </a>
               </li>
 
-              <li class="nav-item ">
+              <!-- <li class="nav-item ">
                 <a class="nav-link text-white " href="../../pages/dean/add.dean.php">
                   <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="material-icons opacity-10">person_add</i>
@@ -351,7 +353,7 @@
               </li>
             </ul>
           </div>
-        </li>
+        </li> -->
         
         <hr class="horizontal light mt-1 mb-1">
         <li class="nav-item">
