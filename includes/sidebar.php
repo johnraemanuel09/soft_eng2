@@ -280,14 +280,14 @@
           </a>
           <div class="collapse " id="applicationsExamples">
             <ul class="nav ">
-               <li class="nav-item ">
+               <!-- <li class="nav-item ">
                 <a class="nav-link text-white " href="../../pages/president/add_president.php">
                   <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="material-icons opacity-10">person_add</i>
                   </div>
                   <span class="nav-link-text ms-1">Add President</span>
                 </a>
-              </li>  -->
+              </li>  --> 
               
               <!-- <li class="nav-item ">
                 <a class="nav-link text-white " href="../../pages/registrar/add-registrar.php">
@@ -349,9 +349,19 @@
                   <span class="nav-link-text ms-1">Add Dean</span>
                 </a>
               </li> -->
+
+              <li class="nav-item ">
+                <a class="nav-link text-white " href="../../pages/equipment/add.equipment.php">
+                  <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="material-icons opacity-10">person_add</i>
+                  </div>
+                  <span class="nav-link-text ms-1">Add Equipment</span>
+                </a>
+              </li>
+
             </ul>
           </div>
-        </li> -->
+        </li> 
         
         <hr class="horizontal light mt-1 mb-1">
         <li class="nav-item">
@@ -510,7 +520,6 @@
           </div>
         </div>
       </div>
-      
 
     <?php } else if ($_SESSION['role'] == "Registrar") {
             ?>
@@ -556,15 +565,9 @@
           </div>
         </li>
 
-        
-        
-
         <hr class="horizontal light mt-1 mb-1">
         <li class="nav-item">
-          
             <ul class="nav ">
-              
-            
               <li class="nav-item ">
                 <a class="nav-link text-white " href="../alumni/alumni-form.php">
                   <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -601,12 +604,10 @@
                 <button type="button" class="btn bg-gradient-danger">Logout</button>
               </a>
             </div>
-
           </div>
         </div>
       </div>
       
-
     <?php } else if ($_SESSION['role'] == "Alum Stud") {
             ?>
       <ul class="navbar-nav">
