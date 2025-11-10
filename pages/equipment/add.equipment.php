@@ -12,45 +12,35 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
-<!DOCTYPE html>
-<html lang="en">
-
 <?php
+
 include '../../includes/session.php';
-// End Session 
 include '../../includes/head.php';
 include '../../includes/conn.php';
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $serial_no = $_POST['serial_no'];
     $date_of_order_received = $_POST['date_of_order_received'];
-    
+    $type_id = $_POST['type_of_equipment']; // assuming the form sends this as type ID
 
-    // Check if passwords match
-    // if ($password !== $confirm_password) {
-    //     echo "<script>alert('Passwords do not match!'); window.history.back();</script>";
-    //     exit;
-    // }
+    // ✅ Correct number of columns and values (4)
+    $stmt = $db->prepare("INSERT INTO tbl_equipment 
+        (Name, `Serial_No.`, Date_of_Order_Received, type_id)
+        VALUES (?, ?, ?, ?)");
 
-    // Hash the password
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-    // Insert into DB
-    $stmt = $db->prepare("INSERT INTO tbl_equipment (name, serialno, orderofreceived)
-                            VALUES (?, ?, ?, ?, ?)");
-    
     if ($stmt === false) {
         die("Prepare failed: " . $db->error);
     }
 
-    $stmt->bind_param("sssss", $firstname, $middlename, $lastname, $username, $hashed_password);
+    // ✅ Binding: string, int, date(string), int
+    $stmt->bind_param("sisi", $name, $serial_no, $date_of_order_received, $type_id);
 
     if ($stmt->execute()) {
         $_SESSION['equipmentAdded'] = true;
-echo "<script>window.location.href='add.equipment.php';</script>";
-exit;
-
+        echo "<script>window.location.href='add.equipment.php';</script>";
+        exit;
     } else {
         echo "Error executing statement: " . $stmt->error;
     }

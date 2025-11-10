@@ -750,7 +750,8 @@ if ($num > 0) {
           </a>
         </li>';
 } ?> 
-      
+
+
       </ul>
       
       <?php } else if ($_SESSION['role'] == "Dean") { ?>
@@ -823,8 +824,6 @@ if ($num > 0) {
 } ?> 
       
       </ul>
-      
-
     <?php } ?>
   </div>
 

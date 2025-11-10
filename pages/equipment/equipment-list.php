@@ -22,7 +22,7 @@ include '../../includes/head.php';
 ?>
 
 <title>
-  Custodian Lists
+  Equipment Lists
 </title>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -41,7 +41,7 @@ include '../../includes/head.php';
         <div class="col-12">
           <div class="card px-4 pb-4">
 
-            <h5 class="mb-0 pt-4">Custodian List</h5>
+            <h5 class="mb-0 pt-4">Equipment List</h5>
 
             <div class="table-responsive">
               <table class="table table-flush" id="datatable-search">
@@ -56,7 +56,7 @@ include '../../includes/head.php';
                 </thead>
                 <tbody>
                   <?php
-$listequipment = mysqli_query($db, "SELECT *, CONCAT(tbl_equipment.name, ' ', tbl_equipment.lastname) AS fullname FROM tbl_custodian
+$listequipment = mysqli_query($db, "SELECT *, CONCAT(tbl_equipment.name, ' ', tbl_equipment.lastname) AS fullname FROM tbl_equipment
                   ");
 while ($row = mysqli_fetch_array($listequipment)) {
     $id = $row['eq_id'];
