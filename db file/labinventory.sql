@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2025 at 01:05 PM
+-- Generation Time: Nov 12, 2025 at 06:20 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -333,6 +333,15 @@ CREATE TABLE `tbl_equipment` (
   `type_id` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tbl_equipment`
+--
+
+INSERT INTO `tbl_equipment` (`eq_id`, `Name`, `Serial_No.`, `Date_of_Order_Received`, `type_id`) VALUES
+(1, 'Test Tube', 1234567, '2025-11-12', 0),
+(2, 'Bottle', 7654321, '0000-00-00', 0),
+(3, 'Test Tube', 1234567, '0000-00-00', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -432,6 +441,16 @@ CREATE TABLE `tbl_gender` (
 INSERT INTO `tbl_gender` (`gender_id`, `gender`) VALUES
 (1, 'Male'),
 (2, 'Female');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_kind_equipment`
+--
+
+CREATE TABLE `tbl_kind_equipment` (
+  `type_id` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -748,6 +767,12 @@ ALTER TABLE `tbl_gender`
   ADD PRIMARY KEY (`gender_id`);
 
 --
+-- Indexes for table `tbl_kind_equipment`
+--
+ALTER TABLE `tbl_kind_equipment`
+  ADD PRIMARY KEY (`type_id`);
+
+--
 -- Indexes for table `tbl_length_employment`
 --
 ALTER TABLE `tbl_length_employment`
@@ -881,7 +906,7 @@ ALTER TABLE `tbl_employment_status`
 -- AUTO_INCREMENT for table `tbl_equipment`
 --
 ALTER TABLE `tbl_equipment`
-  MODIFY `eq_id` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `eq_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_form`
@@ -894,6 +919,12 @@ ALTER TABLE `tbl_form`
 --
 ALTER TABLE `tbl_gender`
   MODIFY `gender_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_kind_equipment`
+--
+ALTER TABLE `tbl_kind_equipment`
+  MODIFY `type_id` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_length_employment`

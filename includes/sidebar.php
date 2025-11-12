@@ -132,7 +132,7 @@
                   <span class="nav-link-text ms-2 ps-1">Registrar Lists</span>
                 </a>
               </li> -->
-              <li class="nav-item ">
+              <!-- <li class="nav-item ">
                 <a class="nav-link text-white " href="../alumni-officer/officer-list.php">
                   <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="material-icons">
@@ -141,8 +141,8 @@
                   </div>
                   <span class="nav-link-text ms-2 ps-1">Alumni Officer Lists</span>
                 </a>
-              </li> -->
-              <li class="nav-item ">
+              </li> --> -->
+              <!-- <li class="nav-item ">
                 <a class="nav-link text-white " href="../alumni/alumni-list.php">
                   <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="material-icons">
@@ -151,7 +151,7 @@
                   </div>
                   <span class="nav-link-text ms-2 ps-1">Alumni Lists</span>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </div>
         </li>
@@ -442,6 +442,16 @@
                     </i>
                   </div>
                   <span class="nav-link-text ms-2 ps-1">Custodian Lists</span>
+                </a>
+              </li>
+            <li class="nav-item ">
+                <a class="nav-link text-white " href="../equipment/equipment-lists.php">
+                  <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="material-icons">
+                      toc
+                    </i>
+                  </div>
+                  <span class="nav-link-text ms-2 ps-1">Equipment Lists</span>
                 </a>
               </li>
             </ul>

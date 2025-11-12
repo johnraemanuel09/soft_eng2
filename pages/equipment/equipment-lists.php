@@ -49,14 +49,15 @@ include '../../includes/head.php';
                 <thead class="thead-light">
                   <tr>
                     <th>Image</th>
-                    <th>Fullname</th>
-                    <th>Username</th>
+                    <th>Name</th>
+                    <th>Serial No.</th>
+                    <th>Date of Order Received</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-$listequipment = mysqli_query($db, "SELECT *, CONCAT(tbl_equipment.name, ' ', tbl_equipment.lastname) AS fullname FROM tbl_equipment
+$listequipment = mysqli_query($db, "SELECT *, CONCAT(tbl_equipment.name, ' ', tbl_equipment.serial_no) AS Name FROM tbl_equipment
                   ");
 while ($row = mysqli_fetch_array($listequipment)) {
     $id = $row['eq_id'];
@@ -70,11 +71,12 @@ while ($row = mysqli_fetch_array($listequipment)) {
     }?>
                       </td>
                       <!-- <td class="text-sm font-weight-normal"><?php echo $row['stud_no']; ?></td> -->
-                      <td class="text-sm font-weight-normal"><?php echo $row['fullname']; ?></td>
-                      <td class="text-sm font-weight-normal"><?php echo $row['username']; ?></td>
+                      <td class="text-sm font-weight-normal"><?php echo $row['name']; ?></td>
+                      <td class="text-sm font-weight-normal"><?php echo $row['serial_no']; ?></td>
+                      <td class="text-sm font-weight-normal"><?php echo $row['date_of_order_received']; ?></td>
                       <?php if ($_SESSION['role'] == "Super Administrator" || $_SESSION['role'] == "Admin") {?>
                       <td class="text-sm font-weight-normal">
-                        <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;" data-bs-toggle="modal" data-bs-target="#deleteEquipment<?php echo $id; ?>"><i class="material-icons text-sm me-2"  >delete</i>Delete</a>
+                        <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;" data-bs-toggle="modal" data-bs-target="#deleteEquipment<?php echo $id; ?>"><i class="material-icons text-sm me-2">delete</i>Delete</a>
                       </td>
                       <?php }?>
                     </tr>

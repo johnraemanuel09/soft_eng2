@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // ✅ Correct number of columns and values (4)
     $stmt = $db->prepare("INSERT INTO tbl_equipment 
-        (Name, `Serial_No.`, Date_of_Order_Received, type_id)
+        (name, `Serial_No.`, Date_of_order_Received, type_id)
         VALUES (?, ?, ?, ?)");
 
     if ($stmt === false) {
