@@ -2,7 +2,6 @@
 include '../../includes/session.php';
 include '../../includes/head.php';
 
-
 if (!isset($_GET['eq_id'])) {
     header("Location: equipment-lists.php");
     exit;
@@ -17,23 +16,33 @@ if (isset($_POST['update_equipment'])) {
     $serial_no = mysqli_real_escape_string($db, $_POST['serial_no']);
     $date_of_order_received = mysqli_real_escape_string($db, $_POST['date_of_order_received']);
 
-    // Handle image upload
-    $imgData = null;
+    // Image upload
     if (isset($_FILES['img']) && $_FILES['img']['size'] > 0) {
         $imgData = addslashes(file_get_contents($_FILES['img']['tmp_name']));
-        $sql = "UPDATE tbl_equipment 
-                SET name='$name', serial_no='$serial_no', date_of_order_received='$date_of_order_received', img='$imgData' 
-                WHERE eq_id=$eq_id";
+        $sql = "
+            UPDATE tbl_equipment 
+            SET 
+                `Name`='$name', 
+                `Serial_No.`='$serial_no', 
+                `Date_of_Order_Received`='$date_of_order_received',
+                img='$imgData'
+            WHERE eq_id=$eq_id
+        ";
     } else {
-        $sql = "UPDATE tbl_equipment 
-                SET name='$name', serial_no='$serial_no', date_of_order_received='$date_of_order_received' 
-                WHERE eq_id=$eq_id";
+        $sql = "
+            UPDATE tbl_equipment 
+            SET 
+                `Name`='$name', 
+                `Serial_No.`='$serial_no', 
+                `Date_of_Order_Received`='$date_of_order_received'
+            WHERE eq_id=$eq_id
+        ";
     }
 
     if (mysqli_query($db, $sql)) {
         $msg = "Equipment updated successfully!";
     } else {
-        $msg = "Error updating Equipment: " . mysqli_error($db);
+        $msg = "Error updating equipment: " . mysqli_error($db);
     }
 }
 
@@ -61,24 +70,43 @@ $equipment = mysqli_fetch_assoc($result);
                 <?php endif; ?>
 
                 <form method="POST" enctype="multipart/form-data">
+
                     <div class="mb-3">
                         <label>Equipment ID</label>
-                        <input type="text" name="equipment_id" class="form-control" value="<?php echo $equipment['equipment_id']; ?>" required>
+                        <input type="text" class="form-control" value="<?php echo $equipment['eq_id']; ?>" disabled>
                     </div>
+
                     <div class="mb-3">
                         <label>Name</label>
-                        <input type="text" name="name" class="form-control" value="<?php echo $equipment['name']; ?>" required>
+                        <input type="text" name="name" class="form-control" 
+                               value="<?php echo $equipment['Name']; ?>" required>
                     </div>
+
                     <div class="mb-3">
                         <label>Serial No.</label>
-                        <input type="text" name="serial_no" class="form-control" value="<?php echo $equipment['serial_no']; ?>" required>
+                        <input type="text" name="serial_no" class="form-control" 
+                               value="<?php echo $equipment['Serial_No.']; ?>" required>
                     </div>
+
                     <div class="mb-3">
                         <label>Date of Order Received</label>
-                        <input type="text" name="date_of_order_received" class="form-control" value="<?php echo $equipment['date_of_order_received']; ?>" required>
+                        <input type="date" name="date_of_order_received" class="form-control" 
+                               value="<?php echo $equipment['Date_of_Order_Received']; ?>" required>
                     </div>
-                    <button type="submit" name="update_equipment" class="btn bg-gradient-info">Update Equipment</button>
-                    <a href="equipment-list.php" class="btn bg-gradient-secondary">Back to List</a>
+
+                    <div class="mb-3">
+                        <label>Upload New Image (optional)</label>
+                        <input type="file" name="img" class="form-control">
+                    </div>
+
+                    <button type="submit" name="update_equipment" class="btn bg-gradient-info">
+                        Update Equipment
+                    </button>
+
+                    <a href="equipment-lists.php" class="btn bg-gradient-secondary">
+                        Back to List
+                    </a>
+
                 </form>
 
             </div>
