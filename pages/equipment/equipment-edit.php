@@ -12,9 +12,9 @@ $msg = '';
 
 // Handle form submission
 if (isset($_POST['update_equipment'])) {
-    $name = mysqli_real_escape_string($db, $_POST['name']);
-    $serial_no = mysqli_real_escape_string($db, $_POST['serial_no']);
-    $date_of_order_received = mysqli_real_escape_string($db, $_POST['date_of_order_received']);
+    $eq_name = mysqli_real_escape_string($db, $_POST['eq_name']);
+    $serial_number = mysqli_real_escape_string($db, $_POST['serial_number']);
+    $date_of_order = mysqli_real_escape_string($db, $_POST['date_of_order']);
 
     // Image upload
     if (isset($_FILES['img']) && $_FILES['img']['size'] > 0) {
@@ -22,9 +22,9 @@ if (isset($_POST['update_equipment'])) {
         $sql = "
             UPDATE tbl_equipment 
             SET 
-                `Name`='$name', 
-                `Serial_No.`='$serial_no', 
-                `Date_of_Order_Received`='$date_of_order_received',
+                `Equipment Name`='$eq_name', 
+                `Serial_Number`='$serial_number', 
+                `Date_of_Order`='$date_of_order',
                 img='$imgData'
             WHERE eq_id=$eq_id
         ";
@@ -32,9 +32,10 @@ if (isset($_POST['update_equipment'])) {
         $sql = "
             UPDATE tbl_equipment 
             SET 
-                `Name`='$name', 
-                `Serial_No.`='$serial_no', 
-                `Date_of_Order_Received`='$date_of_order_received'
+                `Equipment Name`='$eq_name', 
+                `Serial_Number`='$serial_number', 
+                `Date_of_Order`='$date_of_order',
+                img='$imgData'
             WHERE eq_id=$eq_id
         ";
     }
@@ -78,20 +79,20 @@ $equipment = mysqli_fetch_assoc($result);
 
                     <div class="mb-3">
                         <label>Name</label>
-                        <input type="text" name="name" class="form-control" 
-                               value="<?php echo $equipment['Name']; ?>" required>
+                        <input type="text" name="eq_name" class="form-control" 
+                               value="<?php echo $equipment['Equipment Name']; ?>" required>
                     </div>
 
                     <div class="mb-3">
-                        <label>Serial No.</label>
-                        <input type="text" name="serial_no" class="form-control" 
-                               value="<?php echo $equipment['Serial_No.']; ?>" required>
+                        <label>Serial Number</label>
+                        <input type="text" name="serial_number" class="form-control" 
+                               value="<?php echo $equipment['Serial Number']; ?>" required>
                     </div>
 
                     <div class="mb-3">
-                        <label>Date of Order Received</label>
-                        <input type="date" name="date_of_order_received" class="form-control" 
-                               value="<?php echo $equipment['Date_of_Order_Received']; ?>" required>
+                        <label>Date of Order</label>
+                        <input type="date" name="date_of_order" class="form-control" 
+                               value="<?php echo $equipment['Date of Order']; ?>" required>
                     </div>
 
                     <div class="mb-3">

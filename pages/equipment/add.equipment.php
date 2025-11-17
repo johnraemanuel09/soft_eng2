@@ -20,14 +20,15 @@ include '../../includes/conn.php';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST['name'];
-    $serial_no = $_POST['serial_no'];
-    $date_of_order_received = $_POST['date_of_order_received'];
-    $type_id = $_POST['type_of_equipment']; // assuming the form sends this as type ID
+    $eq_name = $_POST['eq_name'];
+    $serial_number = $_POST['serial_number'];
+    $date_of_order = $_POST['date_of_order'];
+    $lab_id = $_POST['lab_id'];
+ // assuming the form sends this as type ID
 
     // ✅ Correct number of columns and values (4)
     $stmt = $db->prepare("INSERT INTO tbl_equipment 
-        (name, `Serial_No.`, Date_of_order_Received, type_id)
+        (eq_name, `serial_number`, date_of_order, lab_id)
         VALUES (?, ?, ?, ?)");
 
     if ($stmt === false) {
@@ -35,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // ✅ Binding: string, int, date(string), int
-    $stmt->bind_param("sisi", $name, $serial_no, $date_of_order_received, $type_id);
+    $stmt->bind_param("ssss", $eq_name, $serial_number, $date_of_order, $lab_id);
 
     if ($stmt->execute()) {
         $_SESSION['equipmentAdded'] = true;
@@ -99,16 +100,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <span>Student Number</span>
                       </div> -->
                       <div class="input-div">
-                        <input type="text" required require name="name">
-                        <span>Name</span>
+                        <input type="text" required require name="eq_name">
+                        <span>Equipment Name</span>
                       </div>
                       <div class="input-div">
-                        <input type="text" required name="serial_no">
-                        <span>Serial No.</span>
+                        <input type="text" required name="serial_number">
+                        <span>Serial Number</span>
                       </div>
                       <div class="input-div">
-                        <input type="text" required name="date_of_order_received">
-                        <span>Date of Received</span>
+                        <!-- <input type="text" required name="date_of_order"> -->
+                        <input type="date" id="birthday" name="date_of_order">
+                        <span>Date of Order</span>
                       </div>
                     </div>
                     <div class="buttons">
@@ -129,8 +131,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                     <div class="input-text">
                       <div class="input-div">
-                        <input type="text" required require name="location">
-                        <span>Which laboratory is this located in?</span>
+                        <input type="text" required name="lab_id">
+                        <span>Laboratory ID</span>
                       </div>
                     </div>
                     <div class="input-text">

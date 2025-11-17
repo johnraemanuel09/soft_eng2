@@ -89,8 +89,8 @@ include '../../includes/head.php';
                   <tr>
                     <th>Image</th>
                     <th>Name</th>
-                    <th>Serial No.</th>
-                    <th>Date of Order Received</th>
+                    <th>Serial Number</th>
+                    <th>Date of Order</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -104,14 +104,14 @@ if (isset($_GET['search'])) {
     $search_safe = mysqli_real_escape_string($db, $search);
 
     // Base query
-    $query = "SELECT *, CONCAT(tbl_equipment.Name, ' ', tbl_equipment.Serial_No.) AS Name FROM tbl_equipment";
+    $query = "SELECT *, CONCAT(tbl_equipment.eq_name, ' ', tbl_equipment.serial_number) AS eq_name FROM tbl_equipment";
 
     // If user typed something, filter by it
     if (!empty($search_safe)) {
-        $query .= " WHERE Name LIKE '%$search_safe%' 
-                    OR Name LIKE '%$search_safe%' 
-                    OR Serial_No. LIKE '%$search_safe%' 
-                    OR CONCAT(Name, ' ', Serial_No.) LIKE '%$search_safe%'";
+        $query .= " WHERE eq_name LIKE '%$search_safe%' 
+                    OR eq_name LIKE '%$search_safe%' 
+                    OR serial_number LIKE '%$search_safe%' 
+                    OR CONCAT(eq_name, ' ', serial_number) LIKE '%$search_safe%'";
     }
 
     $listequipment = mysqli_query($db, $query);
@@ -131,8 +131,8 @@ if (!empty($listequipment) && mysqli_num_rows($listequipment) > 0) {
         echo '<img class="border-radius-lg shadow-sm zoom" style="height:80px; width:80px;" src="data:image/jpeg;base64,' . base64_encode($row['img']) . '"/>';
       } ?>
     </td>
-    <td class="text-sm font-weight-normal"><?php echo $row['Name']; ?></td>
-    <td class="text-sm font-weight-normal"><?php echo $row['Serial_No.']; ?></td>
+    <td class="text-sm font-weight-normal"><?php echo $row['eq_name']; ?></td>
+    <td class="text-sm font-weight-normal"><?php echo $row['serial_number']; ?></td>
 
     <?php if ($_SESSION['role'] == "Super Administrator" || $_SESSION['role'] == "Admin") { ?>
     <td class="text-sm font-weight-normal">
@@ -168,7 +168,7 @@ if (!empty($listequipment) && mysqli_num_rows($listequipment) > 0) {
             <i class="fas fa-trash-alt text-9xl"></i>
             <h4 class="text-gradient text-danger mt-4">Delete Account!</h4>
             <p>Are you sure you want to delete
-              <br><i><b><?php echo $row['firstname']; ?></b></i>?
+              <br><i><b><?php echo $row['eq_name']; ?></b></i>?
             </p>
           </div>
         </div>
