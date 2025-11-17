@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2025 at 06:20 AM
+-- Generation Time: Nov 17, 2025 at 05:09 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -236,25 +236,13 @@ INSERT INTO `tbl_consent` (`consent_id`, `consent`) VALUES
 --
 
 CREATE TABLE `tbl_custodian` (
-  `custodian_id` int(11) NOT NULL,
-  `image` mediumblob NOT NULL,
-  `firstname` varchar(50) NOT NULL,
-  `middlename` varchar(50) NOT NULL,
-  `lastname` varchar(50) NOT NULL,
-  `activation_code` int(6) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(300) NOT NULL
+  `custodian_id` int(100) NOT NULL,
+  `custodian_name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `lab_id` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_custodian`
---
-
-INSERT INTO `tbl_custodian` (`custodian_id`, `image`, `firstname`, `middlename`, `lastname`, `activation_code`, `email`, `username`, `password`) VALUES
-(2, '', 'Kyrie', 'Dimaguiba', 'Batumbakal', 0, '', 'kyriebatumbakal', '$2y$10$w.va9tqcLNgtnwstFg6tA.YrArutQzrLJ4H7cQVxU1yxYYckWGdKG'),
-(3, '', 'adada', 'adsad', 'asdsad', 0, '', 'asdasdsad', '$2y$10$Tr4CNjRJRjrTY7zskKNwG.vsngzo5lJt4zM5gW37gZvikth10jE7a'),
-(4, '', 'Juan ', 'Dela ', 'Crux', 0, '', 'juandelacrux', '$2y$10$XfAkmbehu8jkjxNc90fgKu9gKUPQ.lxEvep.jtE2wLfgIzpR6N/1q');
 
 -- --------------------------------------------------------
 
@@ -281,22 +269,19 @@ CREATE TABLE `tbl_dean` (
 --
 
 CREATE TABLE `tbl_department` (
-  `dep_id` int(11) NOT NULL,
-  `department` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `department_id` int(100) NOT NULL,
+  `department_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_department`
 --
 
-INSERT INTO `tbl_department` (`dep_id`, `department`) VALUES
-(1, 'CS Department'),
-(2, 'BA Department'),
-(3, 'EDUC Department'),
-(4, 'HRM Department'),
-(6, 'LA Department'),
-(7, 'ENG Department'),
-(8, 'NURS Department');
+INSERT INTO `tbl_department` (`department_id`, `department_name`) VALUES
+(1, 'Computer Science Department'),
+(2, 'Engineering'),
+(3, 'Nursing'),
+(4, 'Psychology');
 
 -- --------------------------------------------------------
 
@@ -327,20 +312,11 @@ INSERT INTO `tbl_employment_status` (`emp_status_id`, `status`) VALUES
 
 CREATE TABLE `tbl_equipment` (
   `eq_id` int(50) NOT NULL,
-  `Name` varchar(150) NOT NULL,
-  `Serial_No.` int(200) NOT NULL,
-  `Date_of_Order_Received` date NOT NULL,
-  `type_id` int(50) NOT NULL
+  `eq_name` varchar(150) NOT NULL,
+  `serial_number` int(200) NOT NULL,
+  `date_of_order` date NOT NULL,
+  `lab_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_equipment`
---
-
-INSERT INTO `tbl_equipment` (`eq_id`, `Name`, `Serial_No.`, `Date_of_Order_Received`, `type_id`) VALUES
-(1, 'Test Tube', 1234567, '2025-11-12', 0),
-(2, 'Bottle', 7654321, '0000-00-00', 0),
-(3, 'Test Tube', 1234567, '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -441,16 +417,6 @@ CREATE TABLE `tbl_gender` (
 INSERT INTO `tbl_gender` (`gender_id`, `gender`) VALUES
 (1, 'Male'),
 (2, 'Female');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_kind_equipment`
---
-
-CREATE TABLE `tbl_kind_equipment` (
-  `type_id` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -582,6 +548,19 @@ INSERT INTO `tbl_registrar` (`reg_id`, `img`, `firstname`, `middlename`, `lastna
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_role`
+--
+
+CREATE TABLE `tbl_role` (
+  `role_id` int(100) NOT NULL,
+  `superadmin` varchar(100) NOT NULL,
+  `admin` varchar(100) NOT NULL,
+  `custodian` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_satisfy`
 --
 
@@ -598,6 +577,19 @@ INSERT INTO `tbl_satisfy` (`sat_id`, `satisfy`) VALUES
 (1, 'Very much'),
 (2, 'A little'),
 (3, 'Not satisfied');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_stock`
+--
+
+CREATE TABLE `tbl_stock` (
+  `stock_id` int(100) NOT NULL,
+  `stock_name` varchar(100) NOT NULL,
+  `status` int(11) NOT NULL,
+  `lab_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -672,6 +664,23 @@ INSERT INTO `tbl_teacher` (`teacher_id`, `image`, `firstname`, `middlename`, `la
 (5, '', 'Zardie ', 'Jon', 'Balaoro', 0, '', 'zardiejonbalaoro', '$2y$10$poHd8l2gPHm3oz2.8/74rek5PMykBEvDXTeL7UWhIt.Vqp81YiCye'),
 (7, '', 'Tony', 'Anthony', 'Stark', 0, '', 'tonystark', '$2y$10$6OkOWFtzKGSv9/wnd2nFYupu5sxHrWsq4heYiOj9NQsTh06mzJ7EC');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_user`
+--
+
+CREATE TABLE `tbl_user` (
+  `user_id` int(100) NOT NULL,
+  `firstname` varchar(100) NOT NULL,
+  `middlename` varchar(100) NOT NULL,
+  `lastname` varchar(100) NOT NULL,
+  `image` mediumblob NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `role_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -725,12 +734,6 @@ ALTER TABLE `tbl_consent`
   ADD PRIMARY KEY (`consent_id`);
 
 --
--- Indexes for table `tbl_custodian`
---
-ALTER TABLE `tbl_custodian`
-  ADD PRIMARY KEY (`custodian_id`);
-
---
 -- Indexes for table `tbl_dean`
 --
 ALTER TABLE `tbl_dean`
@@ -740,7 +743,7 @@ ALTER TABLE `tbl_dean`
 -- Indexes for table `tbl_department`
 --
 ALTER TABLE `tbl_department`
-  ADD PRIMARY KEY (`dep_id`);
+  ADD PRIMARY KEY (`department_id`);
 
 --
 -- Indexes for table `tbl_employment_status`
@@ -765,12 +768,6 @@ ALTER TABLE `tbl_form`
 --
 ALTER TABLE `tbl_gender`
   ADD PRIMARY KEY (`gender_id`);
-
---
--- Indexes for table `tbl_kind_equipment`
---
-ALTER TABLE `tbl_kind_equipment`
-  ADD PRIMARY KEY (`type_id`);
 
 --
 -- Indexes for table `tbl_length_employment`
@@ -803,10 +800,23 @@ ALTER TABLE `tbl_registrar`
   ADD PRIMARY KEY (`reg_id`);
 
 --
+-- Indexes for table `tbl_role`
+--
+ALTER TABLE `tbl_role`
+  ADD PRIMARY KEY (`role_id`);
+
+--
 -- Indexes for table `tbl_satisfy`
 --
 ALTER TABLE `tbl_satisfy`
   ADD PRIMARY KEY (`sat_id`);
+
+--
+-- Indexes for table `tbl_stock`
+--
+ALTER TABLE `tbl_stock`
+  ADD PRIMARY KEY (`stock_id`),
+  ADD KEY `lab2` (`lab_id`);
 
 --
 -- Indexes for table `tbl_student`
@@ -825,6 +835,13 @@ ALTER TABLE `tbl_super_ad`
 --
 ALTER TABLE `tbl_teacher`
   ADD PRIMARY KEY (`teacher_id`);
+
+--
+-- Indexes for table `tbl_user`
+--
+ALTER TABLE `tbl_user`
+  ADD PRIMARY KEY (`user_id`),
+  ADD KEY `role` (`role_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -879,12 +896,6 @@ ALTER TABLE `tbl_consent`
   MODIFY `consent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tbl_custodian`
---
-ALTER TABLE `tbl_custodian`
-  MODIFY `custodian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
 -- AUTO_INCREMENT for table `tbl_dean`
 --
 ALTER TABLE `tbl_dean`
@@ -894,7 +905,7 @@ ALTER TABLE `tbl_dean`
 -- AUTO_INCREMENT for table `tbl_department`
 --
 ALTER TABLE `tbl_department`
-  MODIFY `dep_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `department_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_employment_status`
@@ -919,12 +930,6 @@ ALTER TABLE `tbl_form`
 --
 ALTER TABLE `tbl_gender`
   MODIFY `gender_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tbl_kind_equipment`
---
-ALTER TABLE `tbl_kind_equipment`
-  MODIFY `type_id` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_length_employment`
@@ -957,10 +962,22 @@ ALTER TABLE `tbl_registrar`
   MODIFY `reg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `tbl_role`
+--
+ALTER TABLE `tbl_role`
+  MODIFY `role_id` int(100) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tbl_satisfy`
 --
 ALTER TABLE `tbl_satisfy`
   MODIFY `sat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tbl_stock`
+--
+ALTER TABLE `tbl_stock`
+  MODIFY `stock_id` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_student`
@@ -973,6 +990,12 @@ ALTER TABLE `tbl_student`
 --
 ALTER TABLE `tbl_teacher`
   MODIFY `teacher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `tbl_user`
+--
+ALTER TABLE `tbl_user`
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
