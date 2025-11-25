@@ -84,11 +84,9 @@ include '../../includes/head.php';
 
             <div class="table-responsive">
               <table class="table table-flush" id="datatable-search">
-                
                 <thead class="thead-light">
                   <tr>
                     <th>Image</th>
-                    <th>Laboratory ID</th>
                     <th>Name</th>
                     <th>Serial Number</th>
                     <th>Date of Order</th>
