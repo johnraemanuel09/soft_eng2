@@ -88,10 +88,13 @@ include '../../includes/head.php';
                 <thead class="thead-light">
                   <tr>
                     <th>Image</th>
+                    <th>Laboratory ID</th>
                     <th>Name</th>
                     <th>Serial Number</th>
                     <th>Date of Order</th>
+                    <?php if ($_SESSION['role'] == "Super Administrator" || $_SESSION['role'] == "Admin") { ?>
                     <th>Action</th>
+                    <?php } ?>
                   </tr>
                 </thead>
              <tbody>
@@ -104,7 +107,7 @@ if (isset($_GET['search'])) {
     $search_safe = mysqli_real_escape_string($db, $search);
 
     // Base query
-    $query = "SELECT *, CONCAT(tbl_equipment.eq_name, ' ', tbl_equipment.serial_number) AS eq_name FROM tbl_equipment";
+    $query = "SELECT * FROM tbl_equipment";
 
     // If user typed something, filter by it
     if (!empty($search_safe)) {
@@ -133,6 +136,12 @@ if (!empty($listequipment) && mysqli_num_rows($listequipment) > 0) {
     </td>
     <td class="text-sm font-weight-normal"><?php echo $row['eq_name']; ?></td>
     <td class="text-sm font-weight-normal"><?php echo $row['serial_number']; ?></td>
+    <td class="text-sm font-weight-normal">
+      <?php
+        $date = date_create($row['date_of_order']);
+        echo date_format($date, 'F d, Y');
+      ?>
+    </td>
 
     <?php if ($_SESSION['role'] == "Super Administrator" || $_SESSION['role'] == "Admin") { ?>
     <td class="text-sm font-weight-normal">
