@@ -323,23 +323,23 @@
                 </a>
               </li>
 
-              <li class="nav-item ">
+              <!-- <li class="nav-item ">
                 <a class="nav-link text-white " href="../../pages/teacher/add.teacher.php">
                   <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="material-icons opacity-10">person_add</i>
                   </div>
                   <span class="nav-link-text ms-1">Add Teacher</span>
                 </a>
-              </li>
+              </li> -->
 
-              <li class="nav-item ">
+              <!-- <li class="nav-item ">
                 <a class="nav-link text-white " href="../../pages/student/add.student.php">
                   <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="material-icons opacity-10">person_add</i>
                   </div>
                   <span class="nav-link-text ms-1">Add Student</span>
                 </a>
-              </li>
+              </li> -->
 
               <!-- <li class="nav-item ">
                 <a class="nav-link text-white " href="../../pages/dean/add.dean.php">
@@ -373,6 +373,7 @@
             </div>
             <span class="nav-link-text ms-2 ps-1">Account Lists</span>
           </a>
+          
           <div class="collapse " id="ecommerceExamples">
             <ul class="nav ">
               <!-- <li class="nav-item ">
@@ -385,6 +386,7 @@
                   <span class="nav-link-text ms-2 ps-1">Registrar Lists</span>
                 </a>
               </li> -->
+
               <!-- <li class="nav-item ">
                 <a class="nav-link text-white " href="../alumni-officer/officer-list.php">
                   <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -395,6 +397,7 @@
                   <span class="nav-link-text ms-2 ps-1">Alumni Officer Lists</span>
                 </a>
               </li>  -->
+
               <!-- <li class="nav-item ">
                 <a class="nav-link text-white " href="../alumni/alumni-list.php">
                   <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -414,7 +417,8 @@
                   <span class="nav-link-text ms-2 ps-1">Dean Lists</span>
                 </a>
               </li> -->
-              <li class="nav-item ">
+
+              <!-- <li class="nav-item ">
                 <a class="nav-link text-white " href="../teacher/teacher-lists.php">
                   <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="material-icons">
@@ -423,8 +427,9 @@
                   </div>
                   <span class="nav-link-text ms-2 ps-1">Teacher Lists</span>
                 </a>
-              </li>
-              <li class="nav-item ">
+              </li> -->
+
+              <!-- <li class="nav-item ">
                 <a class="nav-link text-white " href="../student/student-lists.php">
                   <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="material-icons">
@@ -433,7 +438,8 @@
                   </div>
                   <span class="nav-link-text ms-2 ps-1">Student Lists</span>
                 </a>
-              </li>
+              </li> -->
+
               <li class="nav-item ">
                 <a class="nav-link text-white " href="../custodian/custodian-lists.php">
                   <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -444,6 +450,7 @@
                   <span class="nav-link-text ms-2 ps-1">Custodian Lists</span>
                 </a>
               </li>
+
             <li class="nav-item ">
                 <a class="nav-link text-white " href="../equipment/equipment-lists.php">
                   <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -457,6 +464,7 @@
             </ul>
           </div>
         </li>
+
         <hr class="horizontal light mt-1 mb-1">
             <li class="nav-item">
           <!-- <a data-bs-toggle="collapse" href="#others" class="nav-link text-white " aria-controls="ecommerceExamples" role="button" aria-expanded="false">
