@@ -7,20 +7,20 @@ if (isset($_POST['login'])) {
   $password = $db->real_escape_string($_POST['password']);
 
   // role 
-  $super_admin = mysqli_query($db, "SELECT * FROM tbl_super_ad WHERE username = '$username'");
-  $numrow      = mysqli_num_rows($super_admin);
+  //$super_admin = mysqli_query($db, "SELECT * FROM tbl_super_ad WHERE username = '$username'");
+  //$numrow      = mysqli_num_rows($super_admin);
 
   $admin = mysqli_query($db, "SELECT * FROM tbl_admin WHERE username = '$username'");
   $numrow1     = mysqli_num_rows($admin);
 
-  $registrar = mysqli_query($db, "SELECT * FROM tbl_registrar WHERE username = '$username'");
-  $numrow2     = mysqli_num_rows($registrar);
+ // $registrar = mysqli_query($db, "SELECT * FROM tbl_registrar WHERE username = '$username'");
+ //  $numrow2     = mysqli_num_rows($registrar);
 
-  $alumni = mysqli_query($db, "SELECT * FROM tbl_alumni WHERE username = '$username'");
-  $numrow4 = mysqli_num_rows($alumni);
+  //$alumni = mysqli_query($db, "SELECT * FROM tbl_alumni WHERE username = '$username'");
+  //$numrow4 = mysqli_num_rows($alumni);
 
-  $principal = mysqli_query($db, "SELECT * FROM tbl_principal WHERE username = '$username'");
-  $numrow5 = mysqli_num_rows($principal);
+  //$ principal = mysqli_query($db, "SELECT * FROM tbl_principal WHERE username = '$username'");
+  // $numrow5 = mysqli_num_rows($principal);
 
   // $dean = mysqli_query($db, "SELECT * FROM tbl_dean WHERE username = '$username'");
   // $numrow6 = mysqli_num_rows($dean);
