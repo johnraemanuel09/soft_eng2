@@ -12,45 +12,37 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
-<!DOCTYPE html>
-<html lang="en">
-
 <?php
+
 include '../../includes/session.php';
-// End Session 
 include '../../includes/head.php';
 include '../../includes/conn.php';
 
+$lab = $db->query("SELECT lab_id, lab_name FROM tbl_laboratory");
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST['name'];
-    $serial_no = $_POST['serial_no'];
-    $date_of_order_received = $_POST['date_of_order_received'];
-    
+    $eq_name = $_POST['eq_name'];
+    $serial_number = $_POST['serial_number'];
+    $date_of_order = $_POST['date_of_order'];
+    $lab_id = $_POST['lab_id'];
+ // assuming the form sends this as type ID
 
-    // Check if passwords match
-    // if ($password !== $confirm_password) {
-    //     echo "<script>alert('Passwords do not match!'); window.history.back();</script>";
-    //     exit;
-    // }
+    // ✅ Correct number of columns and values (4)
+    $stmt = $db->prepare("INSERT INTO tbl_equipment 
+        (eq_name, `serial_number`, date_of_order, lab_id)
+        VALUES (?, ?, ?, ?)");
 
-    // Hash the password
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-    // Insert into DB
-    $stmt = $db->prepare("INSERT INTO tbl_equipment (name, serialno, orderofreceived)
-                            VALUES (?, ?, ?, ?, ?)");
-    
     if ($stmt === false) {
         die("Prepare failed: " . $db->error);
     }
 
-    $stmt->bind_param("sssss", $firstname, $middlename, $lastname, $username, $hashed_password);
+    // ✅ Binding: string, int, date(string), int
+    $stmt->bind_param("sssi", $eq_name, $serial_number, $date_of_order, $lab_id);
 
     if ($stmt->execute()) {
         $_SESSION['equipmentAdded'] = true;
-echo "<script>window.location.href='add.equipment.php';</script>";
-exit;
-
+        echo "<script>window.location.href='add.equipment.php';</script>";
+        exit;
     } else {
         echo "Error executing statement: " . $stmt->error;
     }
@@ -59,7 +51,6 @@ exit;
     $db->close();
 }
 ?>
-
 
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -109,16 +100,17 @@ exit;
                         <span>Student Number</span>
                       </div> -->
                       <div class="input-div">
-                        <input type="text" required require name="name">
-                        <span>Name</span>
+                        <input type="text" required require name="eq_name">
+                        <span>Equipment Name</span>
                       </div>
                       <div class="input-div">
-                        <input type="text" required name="serial_no">
-                        <span>Serial No.</span>
+                        <input type="text" required name="serial_number">
+                        <span>Serial Number</span>
                       </div>
                       <div class="input-div">
-                        <input type="text" required name="date_of_order_received">
-                        <span>Date of Received</span>
+                        <!-- <input type="text" required name="date_of_order"> -->
+                        <input type="date" id="birthday" name="date_of_order">
+                        <span>Date of Order</span>
                       </div>
                     </div>
                     <div class="buttons">
@@ -137,12 +129,23 @@ exit;
                         <span>Type of Equipment</span>
                       </div>
                     </div>
-                    <div class="input-text">
-                      <div class="input-div">
-                        <input type="text" required require name="location">
-                        <span>Which laboratory is this located in?</span>
-                      </div>
+                    <div class="input-div">
+                      <select name="lab_id" required>
+                      <option value="">Select Laboratory</option>
+                      <?php while ($row = $lab->fetch_assoc()): ?>
+                    <option value="<?= $row['lab_id'] ?>">
+                      <?= $row['lab_name'] ?>
+                    </option>
+                      <?php endwhile; ?>
+                    </select>
+                    <!-- <span>Laboratory</span> -->
                     </div>
+                    <!-- <div class="input-text">
+                      <div class="input-div">
+                        <input type="text" required name="lab_id">
+                        <span>Laboratory ID</span>
+                      </div>
+                    </div> -->
                     <div class="input-text">
                       <div class="input-div">
                         <input type="text" required require name="manufacturer">

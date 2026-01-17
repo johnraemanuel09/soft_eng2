@@ -2,8 +2,8 @@
 require '../../includes/conn.php';
 session_start();
 
-$custodian_id = $_GET['custodian_id'];
+$eq_id = $_GET['eq_id'];
 
-mysqli_query($db, "DELETE FROM tbl_custodian  WHERE custodian_id = '$custodian_id' ") or die(mysqli_error($db));
+mysqli_query($db, "DELETE FROM tbl_equipment  WHERE eq_id = '$eq_id' ") or die(mysqli_error($db));
 $_SESSION['successDel'] = true;
-header("location: custodian-lists.php");
+header("location: equipment-lists.php");

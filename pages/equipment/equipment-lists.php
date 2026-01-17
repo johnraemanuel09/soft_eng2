@@ -22,7 +22,7 @@ include '../../includes/head.php';
 ?>
 
 <title>
-  Student Lists
+  Equipment Lists
 </title>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -41,7 +41,7 @@ include '../../includes/head.php';
         <div class="col-12">
           <div class="card px-4 pb-4">
 
-            <h5 class="mb-0 pt-4">Student List</h5>
+            <h5 class="mb-0 pt-4">Equipment List</h5>
 
        <style>
   /* Input focus turns black */
@@ -75,7 +75,7 @@ include '../../includes/head.php';
       type="text" 
       name="search" 
       class="form-control me-2" 
-      placeholder="Search student..." 
+      placeholder="Search equipment..." 
       value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>"
     >
     <button type="submit" class="btn btn-primary btn-search">Search</button>
@@ -84,43 +84,45 @@ include '../../includes/head.php';
 
             <div class="table-responsive">
               <table class="table table-flush" id="datatable-search">
-                
                 <thead class="thead-light">
                   <tr>
                     <th>Image</th>
-                    <th>Fullname</th>
-                    <th>Username</th>
+                    <th>Name</th>
+                    <th>Serial Number</th>
+                    <th>Date of Order</th>
+                    <?php if ($_SESSION['role'] == "Super Administrator" || $_SESSION['role'] == "Admin") { ?>
                     <th>Action</th>
+                    <?php } ?>
                   </tr>
                 </thead>
              <tbody>
 <?php
 // Get search input safely
-$liststudent = []; // initialize empty array
+$listequipment = []; // initialize empty array
 
 if (isset($_GET['search'])) {
     $search = trim($_GET['search']); // remove extra spaces
     $search_safe = mysqli_real_escape_string($db, $search);
 
     // Base query
-    $query = "SELECT *, CONCAT(tbl_student.firstname, ' ', tbl_student.lastname) AS fullname FROM tbl_student";
+    $query = "SELECT * FROM tbl_equipment";
 
     // If user typed something, filter by it
     if (!empty($search_safe)) {
-        $query .= " WHERE firstname LIKE '%$search_safe%' 
-                    OR lastname LIKE '%$search_safe%' 
-                    OR username LIKE '%$search_safe%' 
-                    OR CONCAT(firstname, ' ', lastname) LIKE '%$search_safe%'";
+        $query .= " WHERE eq_name LIKE '%$search_safe%' 
+                    OR eq_name LIKE '%$search_safe%' 
+                    OR serial_number LIKE '%$search_safe%' 
+                    OR CONCAT(eq_name, ' ', serial_number) LIKE '%$search_safe%'";
     }
 
-    $liststudent = mysqli_query($db, $query);
+    $listequipment = mysqli_query($db, $query);
 }
 
 // Display results only if search was clicked
 
-if (!empty($liststudent) && mysqli_num_rows($liststudent) > 0) {
-    while ($row = mysqli_fetch_array($liststudent)) {
-        $id = $row['student_id'];
+if (!empty($listequipment) && mysqli_num_rows($listequipment) > 0) {
+    while ($row = mysqli_fetch_array($listequipment)) {
+        $id = $row['eq_id'];
 ?>
   <tr>
     <td>
@@ -130,14 +132,20 @@ if (!empty($liststudent) && mysqli_num_rows($liststudent) > 0) {
         echo '<img class="border-radius-lg shadow-sm zoom" style="height:80px; width:80px;" src="data:image/jpeg;base64,' . base64_encode($row['img']) . '"/>';
       } ?>
     </td>
-    <td class="text-sm font-weight-normal"><?php echo $row['fullname']; ?></td>
-    <td class="text-sm font-weight-normal"><?php echo $row['username']; ?></td>
+    <td class="text-sm font-weight-normal"><?php echo $row['eq_name']; ?></td>
+    <td class="text-sm font-weight-normal"><?php echo $row['serial_number']; ?></td>
+    <td class="text-sm font-weight-normal">
+      <?php
+        $date = date_create($row['date_of_order']);
+        echo date_format($date, 'F d, Y');
+      ?>
+    </td>
 
     <?php if ($_SESSION['role'] == "Super Administrator" || $_SESSION['role'] == "Admin") { ?>
     <td class="text-sm font-weight-normal">
         <!-- Edit Button -->
         <a class="btn btn-link text-info text-gradient px-3 mb-1"
-           href="student-edit.php?student_id=<?php echo $id; ?>">
+           href="equipment-edit.php?eq_id=<?php echo $id; ?>">
            <i class="material-icons text-sm me-2">edit</i>Edit
         </a>
         <br>
@@ -145,7 +153,7 @@ if (!empty($liststudent) && mysqli_num_rows($liststudent) > 0) {
         <a class="btn btn-link text-danger text-gradient px-3 mb-0"
            href="javascript:;" 
            data-bs-toggle="modal" 
-           data-bs-target="#deleteStudent<?php echo $id; ?>">
+           data-bs-target="#deleteEquipment<?php echo $id; ?>">
            <i class="material-icons text-sm me-2">delete</i>Delete
         </a>
     </td>
@@ -154,7 +162,7 @@ if (!empty($liststudent) && mysqli_num_rows($liststudent) > 0) {
   </tr>
 
   <!-- Delete Modal -->
-  <div class="modal fade" id="deleteStudent<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="deleteEquipment<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -167,13 +175,13 @@ if (!empty($liststudent) && mysqli_num_rows($liststudent) > 0) {
             <i class="fas fa-trash-alt text-9xl"></i>
             <h4 class="text-gradient text-danger mt-4">Delete Account!</h4>
             <p>Are you sure you want to delete
-              <br><i><b><?php echo $row['firstname']; ?></b></i>?
+              <br><i><b><?php echo $row['eq_name']; ?></b></i>?
             </p>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-          <a href="student-del.php?student_id=<?php echo $id; ?>">
+          <a href="equipment-del.php?eq_id=<?php echo $id; ?>">
             <button type="button" class="btn bg-gradient-danger">Delete</button>
           </a>
         </div>

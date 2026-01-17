@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 08, 2025 at 01:05 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Host: 127.0.0.1:3306
+-- Generation Time: Nov 25, 2025 at 07:13 AM
+-- Server version: 9.1.0
+-- PHP Version: 8.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,8 +27,9 @@ SET time_zone = "+00:00";
 -- Table structure for table `tbl_admin`
 --
 
-CREATE TABLE `tbl_admin` (
-  `ad_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_admin`;
+CREATE TABLE IF NOT EXISTS `tbl_admin` (
+  `ad_id` int NOT NULL AUTO_INCREMENT,
   `img` mediumblob NOT NULL,
   `firstname` varchar(100) NOT NULL,
   `middlename` varchar(100) NOT NULL,
@@ -36,8 +37,9 @@ CREATE TABLE `tbl_admin` (
   `activation_code` varchar(200) NOT NULL,
   `email` varchar(100) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `password` varchar(500) NOT NULL,
+  PRIMARY KEY (`ad_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_admin`
@@ -53,10 +55,12 @@ INSERT INTO `tbl_admin` (`ad_id`, `img`, `firstname`, `middlename`, `lastname`, 
 -- Table structure for table `tbl_align`
 --
 
-CREATE TABLE `tbl_align` (
-  `align_id` int(11) NOT NULL,
-  `align` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+DROP TABLE IF EXISTS `tbl_align`;
+CREATE TABLE IF NOT EXISTS `tbl_align` (
+  `align_id` int NOT NULL AUTO_INCREMENT,
+  `align` varchar(40) NOT NULL,
+  PRIMARY KEY (`align_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_align`
@@ -72,16 +76,18 @@ INSERT INTO `tbl_align` (`align_id`, `align`) VALUES
 -- Table structure for table `tbl_alumni`
 --
 
-CREATE TABLE `tbl_alumni` (
-  `alumni_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_alumni`;
+CREATE TABLE IF NOT EXISTS `tbl_alumni` (
+  `alumni_id` int NOT NULL AUTO_INCREMENT,
   `img` mediumblob NOT NULL,
   `stud_no` varchar(50) NOT NULL,
   `firstname` varchar(50) NOT NULL,
   `middlename` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `password` varchar(100) NOT NULL,
+  PRIMARY KEY (`alumni_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_alumni`
@@ -128,10 +134,12 @@ INSERT INTO `tbl_alumni` (`alumni_id`, `img`, `stud_no`, `firstname`, `middlenam
 -- Table structure for table `tbl_attainment`
 --
 
-CREATE TABLE `tbl_attainment` (
-  `attain_id` int(11) NOT NULL,
-  `attainment` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+DROP TABLE IF EXISTS `tbl_attainment`;
+CREATE TABLE IF NOT EXISTS `tbl_attainment` (
+  `attain_id` int NOT NULL AUTO_INCREMENT,
+  `attainment` varchar(100) NOT NULL,
+  PRIMARY KEY (`attain_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_attainment`
@@ -149,10 +157,12 @@ INSERT INTO `tbl_attainment` (`attain_id`, `attainment`) VALUES
 -- Table structure for table `tbl_batch`
 --
 
-CREATE TABLE `tbl_batch` (
-  `batch_id` int(11) NOT NULL,
-  `batch` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+DROP TABLE IF EXISTS `tbl_batch`;
+CREATE TABLE IF NOT EXISTS `tbl_batch` (
+  `batch_id` int NOT NULL AUTO_INCREMENT,
+  `batch` varchar(100) NOT NULL,
+  PRIMARY KEY (`batch_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_batch`
@@ -174,10 +184,12 @@ INSERT INTO `tbl_batch` (`batch_id`, `batch`) VALUES
 -- Table structure for table `tbl_civil_status`
 --
 
-CREATE TABLE `tbl_civil_status` (
-  `civil_id` int(11) NOT NULL,
-  `civil` varchar(35) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+DROP TABLE IF EXISTS `tbl_civil_status`;
+CREATE TABLE IF NOT EXISTS `tbl_civil_status` (
+  `civil_id` int NOT NULL AUTO_INCREMENT,
+  `civil` varchar(35) NOT NULL,
+  PRIMARY KEY (`civil_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_civil_status`
@@ -197,10 +209,12 @@ INSERT INTO `tbl_civil_status` (`civil_id`, `civil`) VALUES
 -- Table structure for table `tbl_collaborate`
 --
 
-CREATE TABLE `tbl_collaborate` (
-  `collab_id` int(11) NOT NULL,
-  `collaborate` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+DROP TABLE IF EXISTS `tbl_collaborate`;
+CREATE TABLE IF NOT EXISTS `tbl_collaborate` (
+  `collab_id` int NOT NULL AUTO_INCREMENT,
+  `collaborate` varchar(50) NOT NULL,
+  PRIMARY KEY (`collab_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_collaborate`
@@ -217,10 +231,12 @@ INSERT INTO `tbl_collaborate` (`collab_id`, `collaborate`) VALUES
 -- Table structure for table `tbl_consent`
 --
 
-CREATE TABLE `tbl_consent` (
-  `consent_id` int(11) NOT NULL,
-  `consent` varchar(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+DROP TABLE IF EXISTS `tbl_consent`;
+CREATE TABLE IF NOT EXISTS `tbl_consent` (
+  `consent_id` int NOT NULL AUTO_INCREMENT,
+  `consent` varchar(5) NOT NULL,
+  PRIMARY KEY (`consent_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_consent`
@@ -235,17 +251,19 @@ INSERT INTO `tbl_consent` (`consent_id`, `consent`) VALUES
 -- Table structure for table `tbl_custodian`
 --
 
-CREATE TABLE `tbl_custodian` (
-  `custodian_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_custodian`;
+CREATE TABLE IF NOT EXISTS `tbl_custodian` (
+  `custodian_id` int NOT NULL AUTO_INCREMENT,
   `image` mediumblob NOT NULL,
-  `firstname` varchar(50) NOT NULL,
-  `middlename` varchar(50) NOT NULL,
-  `lastname` varchar(50) NOT NULL,
-  `activation_code` int(6) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `firstname` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `middlename` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `lastname` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `activation_code` int NOT NULL,
+  `email` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+  `username` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(300) COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`custodian_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_custodian`
@@ -262,17 +280,19 @@ INSERT INTO `tbl_custodian` (`custodian_id`, `image`, `firstname`, `middlename`,
 -- Table structure for table `tbl_dean`
 --
 
-CREATE TABLE `tbl_dean` (
-  `dean_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_dean`;
+CREATE TABLE IF NOT EXISTS `tbl_dean` (
+  `dean_id` int NOT NULL AUTO_INCREMENT,
   `image` mediumblob NOT NULL,
-  `firstname` varchar(50) NOT NULL,
-  `middlename` varchar(50) NOT NULL,
-  `lastname` varchar(50) NOT NULL,
-  `activation_code` int(6) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `firstname` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `middlename` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `lastname` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `activation_code` int NOT NULL,
+  `email` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `username` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(300) COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`dean_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -280,10 +300,12 @@ CREATE TABLE `tbl_dean` (
 -- Table structure for table `tbl_department`
 --
 
-CREATE TABLE `tbl_department` (
-  `dep_id` int(11) NOT NULL,
-  `department` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+DROP TABLE IF EXISTS `tbl_department`;
+CREATE TABLE IF NOT EXISTS `tbl_department` (
+  `dep_id` int NOT NULL AUTO_INCREMENT,
+  `department` varchar(150) NOT NULL,
+  PRIMARY KEY (`dep_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_department`
@@ -304,10 +326,12 @@ INSERT INTO `tbl_department` (`dep_id`, `department`) VALUES
 -- Table structure for table `tbl_employment_status`
 --
 
-CREATE TABLE `tbl_employment_status` (
-  `emp_status_id` int(11) NOT NULL,
-  `status` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+DROP TABLE IF EXISTS `tbl_employment_status`;
+CREATE TABLE IF NOT EXISTS `tbl_employment_status` (
+  `emp_status_id` int NOT NULL AUTO_INCREMENT,
+  `status` varchar(50) NOT NULL,
+  PRIMARY KEY (`emp_status_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_employment_status`
@@ -325,13 +349,25 @@ INSERT INTO `tbl_employment_status` (`emp_status_id`, `status`) VALUES
 -- Table structure for table `tbl_equipment`
 --
 
-CREATE TABLE `tbl_equipment` (
-  `eq_id` int(50) NOT NULL,
-  `Name` varchar(150) NOT NULL,
-  `Serial_No.` int(200) NOT NULL,
-  `Date_of_Order_Received` date NOT NULL,
-  `type_id` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `tbl_equipment`;
+CREATE TABLE IF NOT EXISTS `tbl_equipment` (
+  `eq_id` int NOT NULL AUTO_INCREMENT,
+  `eq_name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `serial_number` int NOT NULL,
+  `date_of_order` date NOT NULL,
+  `lab_id` int NOT NULL,
+  PRIMARY KEY (`eq_id`),
+  KEY `lab1` (`lab_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_equipment`
+--
+
+INSERT INTO `tbl_equipment` (`eq_id`, `eq_name`, `serial_number`, `date_of_order`, `lab_id`) VALUES
+(1, 'test', 1234567, '2025-11-24', 5),
+(2, 'test1', 1234567, '2025-11-24', 3),
+(3, 'test2', 7654321, '2025-11-24', 5);
 
 -- --------------------------------------------------------
 
@@ -339,9 +375,10 @@ CREATE TABLE `tbl_equipment` (
 -- Table structure for table `tbl_form`
 --
 
-CREATE TABLE `tbl_form` (
-  `form_id` int(11) NOT NULL,
-  `alumni_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_form`;
+CREATE TABLE IF NOT EXISTS `tbl_form` (
+  `form_id` int NOT NULL AUTO_INCREMENT,
+  `alumni_id` int NOT NULL,
   `firstname` varchar(50) NOT NULL,
   `middlename` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
@@ -358,19 +395,19 @@ CREATE TABLE `tbl_form` (
   `company_add` varchar(500) NOT NULL,
   `current_title` varchar(200) NOT NULL,
   `contact` varchar(20) NOT NULL,
-  `gender_id` int(11) NOT NULL,
-  `civil_id` int(11) NOT NULL,
-  `program_id` int(11) NOT NULL,
-  `loc_id` int(11) NOT NULL,
-  `type_id` int(11) NOT NULL,
-  `emp_status_id` int(11) NOT NULL,
-  `align_id` int(11) NOT NULL,
-  `length_id` int(11) NOT NULL,
-  `attain_id` int(11) NOT NULL,
-  `batch_id` int(11) NOT NULL,
-  `sat_id` int(11) NOT NULL,
-  `collab_id` int(11) NOT NULL,
-  `consent_id` int(11) NOT NULL,
+  `gender_id` int NOT NULL,
+  `civil_id` int NOT NULL,
+  `program_id` int NOT NULL,
+  `loc_id` int NOT NULL,
+  `type_id` int NOT NULL,
+  `emp_status_id` int NOT NULL,
+  `align_id` int NOT NULL,
+  `length_id` int NOT NULL,
+  `attain_id` int NOT NULL,
+  `batch_id` int NOT NULL,
+  `sat_id` int NOT NULL,
+  `collab_id` int NOT NULL,
+  `consent_id` int NOT NULL,
   `topic` varchar(200) NOT NULL,
   `buss_name` varchar(200) NOT NULL,
   `nat_name` varchar(200) NOT NULL,
@@ -378,8 +415,9 @@ CREATE TABLE `tbl_form` (
   `profit` varchar(100) NOT NULL,
   `buss_addr` varchar(300) NOT NULL,
   `activation_code` varchar(6) NOT NULL,
-  `buss_no` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `buss_no` varchar(20) NOT NULL,
+  PRIMARY KEY (`form_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_form`
@@ -420,10 +458,12 @@ INSERT INTO `tbl_form` (`form_id`, `alumni_id`, `firstname`, `middlename`, `last
 -- Table structure for table `tbl_gender`
 --
 
-CREATE TABLE `tbl_gender` (
-  `gender_id` int(11) NOT NULL,
-  `gender` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+DROP TABLE IF EXISTS `tbl_gender`;
+CREATE TABLE IF NOT EXISTS `tbl_gender` (
+  `gender_id` int NOT NULL AUTO_INCREMENT,
+  `gender` varchar(10) NOT NULL,
+  PRIMARY KEY (`gender_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_gender`
@@ -436,13 +476,53 @@ INSERT INTO `tbl_gender` (`gender_id`, `gender`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_kind_equipment`
+--
+
+DROP TABLE IF EXISTS `tbl_kind_equipment`;
+CREATE TABLE IF NOT EXISTS `tbl_kind_equipment` (
+  `type_id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`type_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_laboratory`
+--
+
+DROP TABLE IF EXISTS `tbl_laboratory`;
+CREATE TABLE IF NOT EXISTS `tbl_laboratory` (
+  `lab_id` int NOT NULL AUTO_INCREMENT,
+  `lab_name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `dep_id` int NOT NULL,
+  PRIMARY KEY (`lab_id`),
+  KEY `department` (`dep_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_laboratory`
+--
+
+INSERT INTO `tbl_laboratory` (`lab_id`, `lab_name`, `dep_id`) VALUES
+(1, 'Computer Laboratoy', 1),
+(2, 'Psych Laboratory', 2),
+(3, 'Bio-Science Laboratory', 3),
+(4, 'Electronics Laboratory', 4),
+(5, 'Chemistry Laboratory', 5);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_length_employment`
 --
 
-CREATE TABLE `tbl_length_employment` (
-  `length_id` int(11) NOT NULL,
-  `length` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+DROP TABLE IF EXISTS `tbl_length_employment`;
+CREATE TABLE IF NOT EXISTS `tbl_length_employment` (
+  `length_id` int NOT NULL AUTO_INCREMENT,
+  `length` varchar(50) NOT NULL,
+  PRIMARY KEY (`length_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_length_employment`
@@ -461,10 +541,12 @@ INSERT INTO `tbl_length_employment` (`length_id`, `length`) VALUES
 -- Table structure for table `tbl_primary_work_loc`
 --
 
-CREATE TABLE `tbl_primary_work_loc` (
-  `loc_id` int(11) NOT NULL,
-  `location` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+DROP TABLE IF EXISTS `tbl_primary_work_loc`;
+CREATE TABLE IF NOT EXISTS `tbl_primary_work_loc` (
+  `loc_id` int NOT NULL AUTO_INCREMENT,
+  `location` varchar(25) NOT NULL,
+  PRIMARY KEY (`loc_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_primary_work_loc`
@@ -480,17 +562,19 @@ INSERT INTO `tbl_primary_work_loc` (`loc_id`, `location`) VALUES
 -- Table structure for table `tbl_principal`
 --
 
-CREATE TABLE `tbl_principal` (
-  `principal_id` int(11) NOT NULL,
-  `image` mediumblob DEFAULT NULL,
-  `firstname` varchar(50) NOT NULL,
-  `middlename` varchar(50) NOT NULL,
-  `lastname` varchar(50) NOT NULL,
-  `activation_code` int(6) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `tbl_principal`;
+CREATE TABLE IF NOT EXISTS `tbl_principal` (
+  `principal_id` int NOT NULL AUTO_INCREMENT,
+  `image` mediumblob,
+  `firstname` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `middlename` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `lastname` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `activation_code` int NOT NULL,
+  `email` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+  `username` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(300) COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`principal_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_principal`
@@ -505,12 +589,14 @@ INSERT INTO `tbl_principal` (`principal_id`, `image`, `firstname`, `middlename`,
 -- Table structure for table `tbl_program`
 --
 
-CREATE TABLE `tbl_program` (
-  `program_id` int(11) NOT NULL,
-  `dep_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_program`;
+CREATE TABLE IF NOT EXISTS `tbl_program` (
+  `program_id` int NOT NULL AUTO_INCREMENT,
+  `dep_id` int NOT NULL,
   `program` varchar(100) NOT NULL,
-  `course_abv` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `course_abv` varchar(30) NOT NULL,
+  PRIMARY KEY (`program_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_program`
@@ -541,8 +627,9 @@ INSERT INTO `tbl_program` (`program_id`, `dep_id`, `program`, `course_abv`) VALU
 -- Table structure for table `tbl_registrar`
 --
 
-CREATE TABLE `tbl_registrar` (
-  `reg_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_registrar`;
+CREATE TABLE IF NOT EXISTS `tbl_registrar` (
+  `reg_id` int NOT NULL AUTO_INCREMENT,
   `img` mediumblob NOT NULL,
   `firstname` varchar(100) NOT NULL,
   `middlename` varchar(100) NOT NULL,
@@ -550,8 +637,9 @@ CREATE TABLE `tbl_registrar` (
   `activation_code` varchar(200) NOT NULL,
   `email` varchar(100) NOT NULL,
   `username` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `password` varchar(100) NOT NULL,
+  PRIMARY KEY (`reg_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_registrar`
@@ -563,13 +651,29 @@ INSERT INTO `tbl_registrar` (`reg_id`, `img`, `firstname`, `middlename`, `lastna
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_role`
+--
+
+DROP TABLE IF EXISTS `tbl_role`;
+CREATE TABLE IF NOT EXISTS `tbl_role` (
+  `role_id` int NOT NULL,
+  `superadmin` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `admin` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `custodian` varchar(100) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_satisfy`
 --
 
-CREATE TABLE `tbl_satisfy` (
-  `sat_id` int(11) NOT NULL,
-  `satisfy` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+DROP TABLE IF EXISTS `tbl_satisfy`;
+CREATE TABLE IF NOT EXISTS `tbl_satisfy` (
+  `sat_id` int NOT NULL AUTO_INCREMENT,
+  `satisfy` varchar(30) NOT NULL,
+  PRIMARY KEY (`sat_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_satisfy`
@@ -586,17 +690,19 @@ INSERT INTO `tbl_satisfy` (`sat_id`, `satisfy`) VALUES
 -- Table structure for table `tbl_student`
 --
 
-CREATE TABLE `tbl_student` (
-  `student_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_student`;
+CREATE TABLE IF NOT EXISTS `tbl_student` (
+  `student_id` int NOT NULL AUTO_INCREMENT,
   `image` mediumblob NOT NULL,
-  `firstname` varchar(50) NOT NULL,
-  `middlename` varchar(50) NOT NULL,
-  `lastname` varchar(50) NOT NULL,
-  `activation_code` int(6) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `firstname` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `middlename` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `lastname` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `activation_code` int NOT NULL,
+  `email` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `username` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(300) COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`student_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_student`
@@ -612,16 +718,18 @@ INSERT INTO `tbl_student` (`student_id`, `image`, `firstname`, `middlename`, `la
 -- Table structure for table `tbl_super_ad`
 --
 
-CREATE TABLE `tbl_super_ad` (
-  `admin_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_super_ad`;
+CREATE TABLE IF NOT EXISTS `tbl_super_ad` (
+  `admin_id` int NOT NULL,
   `img` mediumblob NOT NULL,
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `activation_code` varchar(50) NOT NULL,
   `username` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `password` varchar(100) NOT NULL,
+  PRIMARY KEY (`admin_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -629,17 +737,19 @@ CREATE TABLE `tbl_super_ad` (
 -- Table structure for table `tbl_teacher`
 --
 
-CREATE TABLE `tbl_teacher` (
-  `teacher_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_teacher`;
+CREATE TABLE IF NOT EXISTS `tbl_teacher` (
+  `teacher_id` int NOT NULL AUTO_INCREMENT,
   `image` mediumblob NOT NULL,
-  `firstname` varchar(50) NOT NULL,
-  `middlename` varchar(50) NOT NULL,
-  `lastname` varchar(50) NOT NULL,
-  `activation_code` int(6) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `firstname` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `middlename` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `lastname` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `activation_code` int NOT NULL,
+  `email` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `username` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(300) COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`teacher_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_teacher`
@@ -652,296 +762,6 @@ INSERT INTO `tbl_teacher` (`teacher_id`, `image`, `firstname`, `middlename`, `la
 (4, '', 'John Rae', 'Garcia', 'Manuel', 0, '', 'johnraemanuel', '$2y$10$zKAqigNbuDKzHkWijsth5.qRhPYhbraldmBh.QGgosHguqhupFXEC'),
 (5, '', 'Zardie ', 'Jon', 'Balaoro', 0, '', 'zardiejonbalaoro', '$2y$10$poHd8l2gPHm3oz2.8/74rek5PMykBEvDXTeL7UWhIt.Vqp81YiCye'),
 (7, '', 'Tony', 'Anthony', 'Stark', 0, '', 'tonystark', '$2y$10$6OkOWFtzKGSv9/wnd2nFYupu5sxHrWsq4heYiOj9NQsTh06mzJ7EC');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `tbl_admin`
---
-ALTER TABLE `tbl_admin`
-  ADD PRIMARY KEY (`ad_id`);
-
---
--- Indexes for table `tbl_align`
---
-ALTER TABLE `tbl_align`
-  ADD PRIMARY KEY (`align_id`);
-
---
--- Indexes for table `tbl_alumni`
---
-ALTER TABLE `tbl_alumni`
-  ADD PRIMARY KEY (`alumni_id`);
-
---
--- Indexes for table `tbl_attainment`
---
-ALTER TABLE `tbl_attainment`
-  ADD PRIMARY KEY (`attain_id`);
-
---
--- Indexes for table `tbl_batch`
---
-ALTER TABLE `tbl_batch`
-  ADD PRIMARY KEY (`batch_id`);
-
---
--- Indexes for table `tbl_civil_status`
---
-ALTER TABLE `tbl_civil_status`
-  ADD PRIMARY KEY (`civil_id`);
-
---
--- Indexes for table `tbl_collaborate`
---
-ALTER TABLE `tbl_collaborate`
-  ADD PRIMARY KEY (`collab_id`);
-
---
--- Indexes for table `tbl_consent`
---
-ALTER TABLE `tbl_consent`
-  ADD PRIMARY KEY (`consent_id`);
-
---
--- Indexes for table `tbl_custodian`
---
-ALTER TABLE `tbl_custodian`
-  ADD PRIMARY KEY (`custodian_id`);
-
---
--- Indexes for table `tbl_dean`
---
-ALTER TABLE `tbl_dean`
-  ADD PRIMARY KEY (`dean_id`);
-
---
--- Indexes for table `tbl_department`
---
-ALTER TABLE `tbl_department`
-  ADD PRIMARY KEY (`dep_id`);
-
---
--- Indexes for table `tbl_employment_status`
---
-ALTER TABLE `tbl_employment_status`
-  ADD PRIMARY KEY (`emp_status_id`);
-
---
--- Indexes for table `tbl_equipment`
---
-ALTER TABLE `tbl_equipment`
-  ADD PRIMARY KEY (`eq_id`);
-
---
--- Indexes for table `tbl_form`
---
-ALTER TABLE `tbl_form`
-  ADD PRIMARY KEY (`form_id`);
-
---
--- Indexes for table `tbl_gender`
---
-ALTER TABLE `tbl_gender`
-  ADD PRIMARY KEY (`gender_id`);
-
---
--- Indexes for table `tbl_length_employment`
---
-ALTER TABLE `tbl_length_employment`
-  ADD PRIMARY KEY (`length_id`);
-
---
--- Indexes for table `tbl_primary_work_loc`
---
-ALTER TABLE `tbl_primary_work_loc`
-  ADD PRIMARY KEY (`loc_id`);
-
---
--- Indexes for table `tbl_principal`
---
-ALTER TABLE `tbl_principal`
-  ADD PRIMARY KEY (`principal_id`);
-
---
--- Indexes for table `tbl_program`
---
-ALTER TABLE `tbl_program`
-  ADD PRIMARY KEY (`program_id`);
-
---
--- Indexes for table `tbl_registrar`
---
-ALTER TABLE `tbl_registrar`
-  ADD PRIMARY KEY (`reg_id`);
-
---
--- Indexes for table `tbl_satisfy`
---
-ALTER TABLE `tbl_satisfy`
-  ADD PRIMARY KEY (`sat_id`);
-
---
--- Indexes for table `tbl_student`
---
-ALTER TABLE `tbl_student`
-  ADD PRIMARY KEY (`student_id`);
-
---
--- Indexes for table `tbl_super_ad`
---
-ALTER TABLE `tbl_super_ad`
-  ADD PRIMARY KEY (`admin_id`);
-
---
--- Indexes for table `tbl_teacher`
---
-ALTER TABLE `tbl_teacher`
-  ADD PRIMARY KEY (`teacher_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `tbl_admin`
---
-ALTER TABLE `tbl_admin`
-  MODIFY `ad_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `tbl_align`
---
-ALTER TABLE `tbl_align`
-  MODIFY `align_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tbl_alumni`
---
-ALTER TABLE `tbl_alumni`
-  MODIFY `alumni_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
-
---
--- AUTO_INCREMENT for table `tbl_attainment`
---
-ALTER TABLE `tbl_attainment`
-  MODIFY `attain_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `tbl_batch`
---
-ALTER TABLE `tbl_batch`
-  MODIFY `batch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `tbl_civil_status`
---
-ALTER TABLE `tbl_civil_status`
-  MODIFY `civil_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `tbl_collaborate`
---
-ALTER TABLE `tbl_collaborate`
-  MODIFY `collab_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `tbl_consent`
---
-ALTER TABLE `tbl_consent`
-  MODIFY `consent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tbl_custodian`
---
-ALTER TABLE `tbl_custodian`
-  MODIFY `custodian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `tbl_dean`
---
-ALTER TABLE `tbl_dean`
-  MODIFY `dean_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `tbl_department`
---
-ALTER TABLE `tbl_department`
-  MODIFY `dep_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `tbl_employment_status`
---
-ALTER TABLE `tbl_employment_status`
-  MODIFY `emp_status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `tbl_equipment`
---
-ALTER TABLE `tbl_equipment`
-  MODIFY `eq_id` int(50) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `tbl_form`
---
-ALTER TABLE `tbl_form`
-  MODIFY `form_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
-
---
--- AUTO_INCREMENT for table `tbl_gender`
---
-ALTER TABLE `tbl_gender`
-  MODIFY `gender_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tbl_length_employment`
---
-ALTER TABLE `tbl_length_employment`
-  MODIFY `length_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `tbl_primary_work_loc`
---
-ALTER TABLE `tbl_primary_work_loc`
-  MODIFY `loc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tbl_principal`
---
-ALTER TABLE `tbl_principal`
-  MODIFY `principal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
---
--- AUTO_INCREMENT for table `tbl_program`
---
-ALTER TABLE `tbl_program`
-  MODIFY `program_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
--- AUTO_INCREMENT for table `tbl_registrar`
---
-ALTER TABLE `tbl_registrar`
-  MODIFY `reg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tbl_satisfy`
---
-ALTER TABLE `tbl_satisfy`
-  MODIFY `sat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `tbl_student`
---
-ALTER TABLE `tbl_student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tbl_teacher`
---
-ALTER TABLE `tbl_teacher`
-  MODIFY `teacher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
