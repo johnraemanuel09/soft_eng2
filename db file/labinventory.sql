@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2026 at 07:41 PM
+-- Generation Time: Jan 18, 2026 at 07:52 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -342,7 +342,9 @@ INSERT INTO `tbl_equipment` (`eq_id`, `eq_name`, `serial_number`, `date_of_order
 (3, 'test2', 7654321, '2025-11-24', 5),
 (4, 'test', 1234567, '2026-01-18', 3),
 (5, 'test', 1234567, '2026-01-18', 5),
-(6, 'test1', 7654321, '2026-01-19', 3);
+(6, 'test1', 7654321, '2026-01-19', 3),
+(7, 'test2', 7654321, '2026-01-19', 5),
+(8, 'test3', 7654321, '2026-01-19', 5);
 
 -- --------------------------------------------------------
 
@@ -952,7 +954,7 @@ ALTER TABLE `tbl_employment_status`
 -- AUTO_INCREMENT for table `tbl_equipment`
 --
 ALTER TABLE `tbl_equipment`
-  MODIFY `eq_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `eq_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_form`

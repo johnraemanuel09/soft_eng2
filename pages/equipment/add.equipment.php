@@ -148,8 +148,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div> -->
                     <div class="input-text">
                       <div class="input-div">
-                        <input type="text" required require name="manufacturer">
-                        <span>Manufacturer</span>
+                        <input type="text" required require name="supplier">
+                        <span>Supplier</span>
                       </div>
                     </div>
                     <div class="input-text">
