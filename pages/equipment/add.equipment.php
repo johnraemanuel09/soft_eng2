@@ -18,6 +18,7 @@ include '../../includes/session.php';
 include '../../includes/head.php';
 include '../../includes/conn.php';
 
+$lab = $db->query("SELECT lab_id, lab_name FROM tbl_laboratory");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $eq_name = $_POST['eq_name'];
@@ -36,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // ✅ Binding: string, int, date(string), int
-    $stmt->bind_param("ssss", $eq_name, $serial_number, $date_of_order, $lab_id);
+    $stmt->bind_param("sssi", $eq_name, $serial_number, $date_of_order, $lab_id);
 
     if ($stmt->execute()) {
         $_SESSION['equipmentAdded'] = true;
@@ -50,7 +51,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db->close();
 }
 ?>
-
 
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -129,12 +129,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <span>Type of Equipment</span>
                       </div>
                     </div>
-                    <div class="input-text">
+                    <div class="input-div">
+                      <select name="lab_id" required>
+                      <option value="">Select Laboratory</option>
+                      <?php while ($row = $lab->fetch_assoc()): ?>
+                    <option value="<?= $row['lab_id'] ?>">
+                      <?= $row['lab_name'] ?>
+                    </option>
+                      <?php endwhile; ?>
+                    </select>
+                    <!-- <span>Laboratory</span> -->
+                    </div>
+                    <!-- <div class="input-text">
                       <div class="input-div">
                         <input type="text" required name="lab_id">
                         <span>Laboratory ID</span>
                       </div>
-                    </div>
+                    </div> -->
                     <div class="input-text">
                       <div class="input-div">
                         <input type="text" required require name="manufacturer">

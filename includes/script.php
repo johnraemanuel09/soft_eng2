@@ -25,8 +25,6 @@
 
 
 
-
-
 <script>
   var win = navigator.platform.indexOf('Win') > -1;
   if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -49,8 +47,6 @@
 } );
 
 </script>
-
-
 
 
 <script src="../../assets/js/material-dashboard.min.js"></script>
